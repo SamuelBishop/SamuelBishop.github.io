@@ -7,6 +7,23 @@
   pointer-events: none;
 }
 
+.center {
+  /* margin: auto;
+  width: 50%;
+  border: 3px solid blue;
+  padding: 10px; */
+  /* margin-top: 20px; */
+  text-align: center;
+  background-color: #7EC0EE;
+  font-size: 8vw;
+}
+
+.titleText {
+  padding-top: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  /* padding-bottom: -50px; */
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
