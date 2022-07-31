@@ -23,16 +23,11 @@ controls.keys = {
 }
 controls.maxPolarAngle = Math.PI/1.3;
 controls.minPolarAngle = Math.PI/4;
-// controls.position.set(0, 1.7, 3);
 
 // camera
-// 2 definetly z
-// 1 is back from the guy
-// 3 is to the right of the guy
-const ptToLookAt = new Vector3(0, 1, 0);
-/// const cameraPositionPt = new Vector3(0, 1.7, 3);
+const ptToLookAt = new Vector3(0, 1, 0)
 controls.target.set(0, 1, 0);
-camera.position.set(0, 1.7, 3);
+camera.position.set(1.2, 1.7, 3);
 camera.lookAt(ptToLookAt);
 controls.update();
 
