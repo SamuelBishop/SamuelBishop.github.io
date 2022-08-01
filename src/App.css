@@ -53,3 +53,11 @@
     transform: rotate(360deg);
   }
 }
+
+  /* Custom Implementations (Need to learn CSS better)*/
+  .samCustomClass {
+    border: 10px dashed #020231;
+    top: -100px;
+    bottom: 10px;
+    /* outline: green solid 3px; */
+  }

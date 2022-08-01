@@ -1,4 +1,4 @@
-import { Group, SpotLight, PointLight, AmbientLight, HemisphereLight, Color, DirectionalLight } from 'three';
+import { Group, AmbientLight, HemisphereLight, DirectionalLight } from 'three';
 
 export default class BasicLights extends Group {
   constructor(...args) {
@@ -14,7 +14,7 @@ export default class BasicLights extends Group {
     backLight.position.set(0, 7, -10);
     backLight.target.position.set(0, 1.7, 0);
     const ambi = new AmbientLight( 0x080820 , 1);
-    const hemi = new HemisphereLight( 0xfdfbd3 , 0x9e9e9e, 1 )
+    const hemi = new HemisphereLight( 0xfdfbd3 , 0xfdfbd3, 1.4 )
 
     this.add(ambi, hemi, keyLight, fillLight, backLight);
   }

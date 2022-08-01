@@ -2,6 +2,7 @@ import './App.css';
 import { WebGLRenderer, PerspectiveCamera, Scene, Vector3, Clock } from 'three';
 import { OrbitControls } from './OrbitControls';
 import SeedScene from './objects/Scene.js';
+import { render } from '@testing-library/react';
 
 const scene = new Scene();
 const { innerHeight, innerWidth } = window;
@@ -15,12 +16,6 @@ scene.add(seedScene);
 
 // Setting up the controls
 controls.enableZoom = false;
-controls.keys = {
-	LEFT: 'ArrowLeft', //left arrow
-	UP: 'ArrowUp', // up arrow
-	RIGHT: 'ArrowRight', // right arrow
-	BOTTOM: 'ArrowDown' // down arrow
-}
 controls.maxPolarAngle = Math.PI/1.3;
 controls.minPolarAngle = Math.PI/4;
 
@@ -35,10 +30,7 @@ controls.update();
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setClearColor(0x7ec0ee, 1);
 
-// let mixer = new AnimationMixer(seedScene.children[0]);
-// mixer.clipAction(seedScene.children[0].animations[0]).play();
 let clock = new Clock();
-console.log(seedScene);
 
 // render loop
 const onAnimationFrameHandler = (timeStamp) => {
@@ -46,15 +38,14 @@ const onAnimationFrameHandler = (timeStamp) => {
   seedScene.update && seedScene.update(timeStamp);
   if ( seedScene.children[0].mixer ) seedScene.children[0].mixer.update( clock.getDelta() );
   window.requestAnimationFrame(onAnimationFrameHandler);
-  // controls.update();
 }
 window.requestAnimationFrame(onAnimationFrameHandler);
 
 // resize
 const windowResizeHanlder = () => { 
   const { innerHeight, innerWidth } = window;
-  renderer.setSize(innerWidth, innerHeight - document.body.children[1].clientHeight);
-  camera.aspect = innerWidth / innerHeight;
+  renderer.setSize(innerWidth, (innerHeight - document.body.children[0].clientHeight) / 3);
+  camera.aspect = innerWidth / (innerHeight / 3);
   camera.updateProjectionMatrix();
 };
 windowResizeHanlder();
@@ -62,15 +53,23 @@ window.addEventListener('resize', windowResizeHanlder);
 
 // dom
 document.body.style.margin = 0;
-if (document.body.children[2]){
-  document.body.removeChild(document.body.children[2])
+if (document.body.children[1]){
+  document.body.removeChild(document.body.children[1])
 }
+renderer.domElement.classList.add('samCustomClass');
 document.body.appendChild( renderer.domElement );
-
 
 function App() {
   return (
-    <body></body>
+    <div>
+      <div>Hi, I'm Sam.</div>
+      <div>I’m a product designer and engineer with skills
+      and experiences that allow me to take ideas from
+      concept to mock to prototype to production.</div>
+      <div>Currently a Full-Stack Software Engineer at Microsoft, Former Embedded
+      Devices Enthusiast (SWE Intern) at Garmin, Electrical and Computer Engineering at
+      the University of Missouri. </div>
+    </div>
   );
 }
 
